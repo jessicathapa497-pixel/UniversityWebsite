@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Portal - Nepal Public University</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+      /* 1. Global Styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f4f7f9;
+        color: #333;
+        line-height: 1.6;
+      }
+      
+      /* 2. Hero Section */
+      .apply-hero {
+        text-align: center;
+        padding: 60px 20px;
+        background-color: #0a2540;
+        color: white;
+        margin-bottom: 20px;
+        padding-bottom: 100px;
+      }
+      
+      .apply-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      
+      .apply-hero p {
+        opacity: 0.9;
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      
+      /* 3. Form Container */
+      .form-container {
+        max-width: 950px;
+        margin: 0 auto 50px auto;
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(219, 203, 203, 0.1);
+        position: relative;
+      }
+      
+      h2 {
+        color: #1a2b48;
+        margin-bottom: 30px;
+        font-size: 1.5rem;
+        border: 5px solid #032953;
+        text-align: center;
+        padding-left: 15px;
+      }
+      
+      h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+        color: #1a2b48;
+      }
+      
+      /* 4. Sections */
+      .section-box {
+        background-color: #f0f7ff;
+        padding: 25px;
+        border-radius: 10px;
+        border: 1px solid #ffffff;
+        margin-bottom: 30px;
+      }
+      
+      .address-section {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 2px solid #eee;
+      }
+      
+      /* 5. Flexbox Layout */
+      .row {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+        flex-wrap: wrap; /* Makes it responsive */
+      }
+      
+      .field {
+        flex: 1;
+        min-width: 250px; /* Prevents fields from getting too small */
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* 6. Inputs & Labels */
+      label {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #000000;
+      }
+      
+      input,
+      select {
+        padding: 12px 15px;
+        border: 1px solid #dce1e5;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background-color: #fff;
+      }
+      
+      input:focus,
+      select:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        outline: none;
+      }
+      
+      /* 7. Button */
+      .submit-btn {
+        background-color: #1679e4;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        text-align: right;
+        display: block; /* Allows margin: auto to work */
+        width: fit-content; /* Button only takes up space it needs */
+        margin-left: auto; /* Pushes the button to the far right */
+        margin-top: 30px;
+      }
+      
+      .submit-btn:hover {
+        background-color: #060607;
+      }
+      
+      /* Tablet/Mobile optimization */
+      @media (max-width: 768px) {
+        .row {
+          gap: 10px;
+        }
+        .form-container {
+          padding: 20px;
+          margin: 0 15px 30px 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="apply-hero">
+      <div class="apply-hero-content">
+        <h1>Application Portal</h1>
+        <p>
+          Welcome to Nepal Public University's Application Portal. <br />
+          Please fill the form below with your details to apply.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-container">
+      <h2>Personal Information & Course Selection</h2>
+
+      <div class="section-box">
+        <h3>Course Selection</h3>
+
+        <div class="row">
+          <div class="field">
+            <label>Select Program *</label>
+            <select>
+              <option disabled selected>-- Select Program --</option>
+              <option>BSc (Hons) Computer Science with AI</option>
+              <option>BSc (Hons) Ethical Hacking & Cybersecurity</option>
+              <option>BSc (Hons) Software Engineering</option>
+              <option>MSc Data Science and Computational Intelligence</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Intake *</label>
+            <select>
+              <option disabled selected>-- Select Intake --</option>
+              <option>September</option>
+              <option>March</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>First Name *</label>
+          <input type="text" placeholder="e.g. Jack" />
+        </div>
+        <div class="field">
+          <label>Middle Name</label>
+          <input type="text" placeholder="e.g. Blue" />
+        </div>
+        <div class="field">
+          <label>Last Name *</label>
+          <input type="text" placeholder="e.g. Smith" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Date of Birth *</label>
+          <input type="date" />
+        </div>
+        <div class="field">
+          <label>Gender *</label>
+          <select>
+            <option disabled selected>-- Select Gender --</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Email Address *</label>
+          <input type="email" placeholder="john@example.com" />
+        </div>
+        <div class="field">
+          <label>Phone Number *</label>
+          <input type="tel" placeholder="+977 98XXXXXXXX" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label>Password *</label>
+          <input type="password" placeholder="Create a password" />
+        </div>
+        <div class="field">
+          <label>Confirm Password *</label>
+          <input type="password" placeholder="Confirm your password" />
+        </div>
+      </div>
+
+      <div class="address-section">
+        <h3>Address</h3>
+        <div class="row">
+          <div class="field">
+            <label>District *</label>
+            <input type="text" placeholder="e.g. Kathmandu" />
+          </div>
+          <div class="field">
+            <label>Province *</label>
+            <select>
+              <option disabled selected>-- Select Province --</option>
+              <option>Koshi Province</option>
+              <option>Madhesh Province</option>
+              <option>Bagmati Province</option>
+              <option>Gandaki Province</option>
+              <option>Lumbini Province</option>
+              <option>Karnali Province</option>
+              <option>Sudurpaschim Province</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </div>
+  </body>
+</html>
