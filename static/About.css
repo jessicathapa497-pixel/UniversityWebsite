@@ -240,21 +240,20 @@ body {
 
 /* BENEFITS */
 .benefits {
-    background: rgba(10, 37, 64, 0.95);
-    color: white;
+    
+    color: black;
     padding: 40px 4%;
     text-align: center;
 }
 
 .benefits-container {
-    max-width: 1000px;
-    margin: 40px auto 0;
+    margin: 20px auto 0;
     text-align: center;
 }
 
 .benefit-item {
-    margin-bottom: 30px;
-    padding-left: 20px;
+    margin-bottom: 20px;
+    padding-left: 40px 5%;
 }
 
 .benefit-item h3 {
@@ -277,3 +276,103 @@ body {
         width: 80%;
     }
 }
+
+
+
+/* --- Footer Styles --- */
+        .main-footer {
+            background-color: #000;
+            color: #fff;
+            padding: 80px 8% 40px;
+            font-size: 14px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        
+        .footer-col.brand h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+        
+        .footer-col.brand p {
+            color: #ccc;
+            margin: 20px 0;
+        }
+        
+        .footer-logo {
+            max-width: 60px;
+            height: auto;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            color: #fff;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent-pink);
+            transform: translateY(-3px);
+        }
+        
+        .office-hours {
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        
+        .office-hours p {
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px){
+        .footer-container { grid-template-columns: 1fr; }
+            .main-footer { text-align: center; }
+            .social-links { justify-content: center; }
+        }

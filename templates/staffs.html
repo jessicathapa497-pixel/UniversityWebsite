@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Management | Nepal Public University</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            display: flex;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: var(--white);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            padding: 25px 20px;
+        }
+
+        .university-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .university-logo img {
+            height: 36px;
+        }
+
+        .university-logo span {
+            font-weight: 700;
+            font-size: 0.85rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: var(--text-dark);
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 6px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: 0.25s ease;
+            position: relative;
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-link:hover,
+        .nav-item.active .nav-link {
+            background: #eff6ff;
+            color: var(--primary);
+        }
+
+        .nav-item.active .nav-link::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 4px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* ===== MAIN ===== */
+        .main-content {
+            margin-left: 260px;
+            width: calc(100% - 260px);
+            padding: 30px 40px;
+        }
+
+        /* ===== HEADER ===== */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248,250,252,0.7);
+            backdrop-filter: blur(10px);
+            padding: 18px 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 420px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            width: 100%;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .user-info p {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
+
+        /* ===== STAFF SECTION ===== */
+        .section-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 14px 35px rgba(0,0,0,0.06);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .add-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        /* ===== TABLE ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f1f5f9;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        th {
+            font-weight: 600;
+            color: var(--text-gray);
+        }
+
+        tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .active {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .inactive {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .action-btns i {
+            margin-right: 12px;
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .action-btns i:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+    <div class="university-logo">
+        <img src="../images/Unilogo.png">
+        <span>Nepal Public<br>University</span>
+    </div>
+
+    <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-chart-pie"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a href="students.html" class="nav-link"><i class="fa-solid fa-graduation-cap"></i>Students</a>
+        </li>
+        <li class="nav-item">
+            <a href="teachers.html" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i>Teachers</a>
+        </li>
+        <li class="nav-item active">
+            <a href="staffs.html" class="nav-link"><i class="fa-solid fa-users"></i>Staffs</a>
+        </li>
+        <li class="nav-item">
+            <a href="notice.html" class="nav-link"><i class="fa-solid fa-bullhorn"></i>Notice Board</a>
+        </li>
+        <li class="nav-item">
+            <a href="settings.html" class="nav-link"><i class="fa-solid fa-gear"></i>Settings</a>
+        </li>
+    </ul>
+</aside>
+
+<!-- ===== MAIN ===== -->
+<main class="main-content">
+
+    <header class="top-header">
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass" style="color:#94a3b8;"></i>
+            <input type="text" placeholder="Search staff...">
+        </div>
+
+        <div class="user-profile">
+            <div class="user-info">
+                <h4>Admin User</h4>
+                <p>Super Admin</p>
+            </div>
+            <img class="user-avatar"
+                 src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff">
+        </div>
+    </header>
+
+    <div class="section-card">
+        <div class="section-header">
+            <h2>University Staff</h2>
+            <button class="add-btn"><i class="fa-solid fa-plus"></i> Add Staff</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Position</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ramesh Adhikari</td>
+                    <td>Administration</td>
+                    <td>Office Manager</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sita Koirala</td>
+                    <td>Finance</td>
+                    <td>Account Officer</td>
+                    <td><span class="status inactive">Inactive</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Raha Dhakal</td>
+                    <td>Finance administrator</td>
+                    <td>Account Manager</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Binita Shrestha</td>
+                    <td>Lecturer</td>
+                    <td>Teaching Assistant</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+              
+               <tr>
+                    <td>James Rai</td>
+                    <td>Lecturer</td>
+                    <td>Teaching Assistant</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>Jenny Malla</td>
+                    <td>Lecturer</td>
+                    <td>Teaching Assistant</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+               <tr>
+                    <td>Nova Chettri</td>
+                    <td>Lecturer</td>
+                    <td>Teaching Assistant</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+
+
+               <tr>
+                    <td>Binod Shrestha</td>
+                    <td>Library</td>
+                    <td>Librarian</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+                
+                 <tr>
+                    <td>Gita Thapa</td>
+                    <td>Maintainence</td>
+                    <td> Maintainence Officer</td>
+                    <td><span class="status inactive">Inactive</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Prof. Shree Krishna Poudel</td>
+                    <td>Vice-Chancellor</td>
+                    <td> Academics administrator</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Dr. James Shrestha</td>
+                    <td>Registrar</td>
+                    <td> Academics administrator</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td>Prof. Prabha Chettri</td>
+                    <td>Dean of Research</td>
+                    <td> Research administrator</td>
+                    <td><span class="status active">Active</span></td>
+                    <td class="action-btns">
+                        <i class="fa-solid fa-pen"></i>
+                        <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+
+              
+                
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+</body>
+</html>

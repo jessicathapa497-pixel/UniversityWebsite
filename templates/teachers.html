@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teachers Management | Nepal Public University</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root {
+    --primary:#3b82f6;
+    --bg:#f8fafc;
+    --white:#ffffff;
+    --text-dark:#1e293b;
+    --text-gray:#64748b;
+    --border:#e2e8f0;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:var(--bg);
+    display:flex;
+}
+
+h1,h2{
+    font-family:'Plus Jakarta Sans',sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:var(--white);
+    border-right:1px solid var(--border);
+    position:fixed;
+    padding:25px 20px;
+}
+
+.university-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:40px;
+}
+
+.university-logo img{height:36px;}
+
+.university-logo span{
+    font-weight:700;
+    font-size:.85rem;
+    text-transform:uppercase;
+}
+
+.nav-menu{list-style:none;}
+
+.nav-item{margin-bottom:6px;}
+
+.nav-link{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 16px;
+    color:var(--text-gray);
+    text-decoration:none;
+    border-radius:12px;
+    transition:.25s;
+}
+
+.nav-link:hover,
+.nav-item.active .nav-link{
+    background:#eff6ff;
+    color:var(--primary);
+}
+
+/* MAIN */
+.main-content{
+    margin-left:260px;
+    width:calc(100% - 260px);
+    padding:30px 40px;
+}
+
+/* HEADER */
+.top-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(248,250,252,.7);
+    backdrop-filter:blur(10px);
+    padding:18px 25px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.search-bar{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:10px 18px;
+    display:flex;
+    gap:10px;
+    width:420px;
+}
+
+.search-bar input{
+    border:none;
+    outline:none;
+    width:100%;
+}
+
+.user-profile{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.user-avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+}
+
+/* CARD */
+.section-card{
+    background:#fff;
+    padding:30px;
+    border-radius:22px;
+    box-shadow:0 14px 35px rgba(0,0,0,.06);
+}
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.add-btn{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{background:#f1f5f9;}
+
+th,td{
+    padding:14px 16px;
+    font-size:14px;
+}
+
+th{color:var(--text-gray);}
+
+tr{border-bottom:1px solid var(--border);}
+
+tr:hover{background:#f8fafc;}
+
+.status{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.active{
+    background:#ecfdf5;
+    color:#059669;
+}
+
+.inactive{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.action-btns i{
+    margin-right:12px;
+    cursor:pointer;
+    color:var(--text-gray);
+}
+
+.action-btns i:hover{color:var(--primary);}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<div class="university-logo">
+<img src="../images/Unilogo.png">
+<span>Nepal Public<br>University</span>
+</div>
+
+<ul class="nav-menu">
+<li class="nav-item"><a href="index.html" class="nav-link"><i class="fa-solid fa-chart-pie"></i>Dashboard</a></li>
+<li class="nav-item"><a href="students.html" class="nav-link"><i class="fa-solid fa-graduation-cap"></i>Students</a></li>
+<li class="nav-item active"><a href="teachers.html" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i>Teachers</a></li>
+<li class="nav-item"><a href="staffs.html" class="nav-link"><i class="fa-solid fa-users"></i>Staffs</a></li>
+<li class="nav-item"><a href="notice.html" class="nav-link"><i class="fa-solid fa-bullhorn"></i>Notice Board</a></li>
+<li class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-gear"></i>Settings</a></li>
+</ul>
+</aside>
+
+<!-- MAIN -->
+<main class="main-content">
+
+<header class="top-header">
+<div class="search-bar">
+<i class="fa-solid fa-magnifying-glass" style="color:#94a3b8;"></i>
+<input type="text" placeholder="Search teachers...">
+</div>
+
+<div class="user-profile">
+<div>
+<strong>Admin User</strong><br>
+<small style="color:#64748b;">Super Admin</small>
+</div>
+<img class="user-avatar" src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff">
+</div>
+</header>
+
+<div class="section-card">
+<div class="section-header">
+<h2>University Teachers</h2>
+<button class="add-btn"><i class="fa-solid fa-plus"></i> Add Teacher</button>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Department</th>
+<th>Subject</th>
+<th>Status</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Dr. Anil Sharma</td>
+<td>Computer Science</td>
+<td>Data Structures</td>
+<td><span class="status active">Active</span></td>
+<td class="action-btns">
+<i class="fa-solid fa-pen"></i>
+<i class="fa-solid fa-trash"></i>
+</td>
+</tr>
+
+<tr>
+<td>Prof. Meena Koirala</td>
+<td>Management</td>
+<td>Business Studies</td>
+<td><span class="status active">Active</span></td>
+<td class="action-btns">
+<i class="fa-solid fa-pen"></i>
+<i class="fa-solid fa-trash"></i>
+</td>
+</tr>
+
+<tr>
+<td>Mr. Suresh Rai</td>
+<td>Mathematics</td>
+<td>Linear Algebra</td>
+<td><span class="status inactive">Inactive</span></td>
+<td class="action-btns">
+<i class="fa-solid fa-pen"></i>
+<i class="fa-solid fa-trash"></i>
+</td>
+</tr>
+
+<tr>
+<td>Ms. Rina Thapa</td>
+<td>Physics</td>
+<td>Quantum Mechanics</td>
+<td><span class="status active">Active</span></td>
+<td class="action-btns">
+<i class="fa-solid fa-pen"></i>
+<i class="fa-solid fa-trash"></i>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</main>
+</body>
+</html>

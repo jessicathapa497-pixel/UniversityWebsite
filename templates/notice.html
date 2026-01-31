@@ -1,190 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | University</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-   
-
+    <title>University Portal | Notices</title>
     <style>
+        /* CSS Variables for easy color management */
+        :root {
+            --primary-navy: #0A2540;
+            --light-bg: #f8fbff;
+            --text-main: #1a1a1a;
+            --text-muted: #64748b;
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
-        }
-
-        /* Simple Header */
-        .hero {
-            text-align: center;
-            padding: 60px 20px;
-            background-color: #0a2540;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            color: #fbbf24;
-            /* Goldenrod color */
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Compact Container */
-        /* Updated Container for Parallel Layout */
-        .container {
-            max-width: 1000px;
-            /* Wider to fit both boxes */
-            margin: 40px auto;
-            padding: 0 20px;
-            display: flex;
-            /* Makes children (cards) sit side-by-side */
-            gap: 30px;
-            /* Space between the two boxes */
-            align-items: flex-start;
-            /* Keeps boxes aligned at the top */
-        }
-
-        /* Ensure boxes take up equal space */
-        .card {
-            flex: 1;
-            /* Both boxes will be equal width */
-            background: whitesmoke;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
-
-        }
-
-        .card h2 {
-            text-align: center;
-            color: goldenrod;
-            font-size: 20px;
-            margin-bottom: 25px;
-            font-weight: 700;
-        }
-
-        /* Responsive fix: Stack them on top of each other on mobile phones */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                max-width: 500px;
-            }
-        }
-
-
-
-        /* Form Styling */
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            outline: none;
-            font-size: 18px;
-        }
-
-        .form-group input:focus {
-            border-color: #0a2540;
-        }
-
-        .submit-btn {
-            width: 100%;
-            background: #2465f1;
-            color: rgb(255, 255, 255);
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .submit-btn:hover {
-            background: #1d1d1d;
-        }
-
-        /* Contact Items Centered */
-        .info-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .info-item i {
-            color: #5c319c;
-            font-size: 20px;
-            margin-bottom: 5px;
-        }
-
-        .info-item h4 {
-            font-size: 15px;
-            text-transform: uppercase;
-            color: #1b184f;
             margin: 0;
-        }
-
-        .info-item p {
-            font-size: 18px;
-            font-weight: 500;
-            margin: 0;
-        }
-
-        /* Social Icons Centered */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #f3f4f6;
-        }
-
-        .social-links a {
-            color: #4b5563;
-            font-size: 22px;
-            transition: color 0.2s;
-        }
-
-        .social-links a:hover {
-            color: #062ee2;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
         }
 
        
 
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(10, 37, 64, 0.9), rgba(10, 37, 64, 0.9));
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
 
-        .full-map-section {
-            width: 100%;
-            height: 200px;
-            /* Adjust this value to match your nav bar's height */
-            margin: 10px 0 0 0;
-            /* Space above map, zero space on sides/bottom */
-            padding: 0;
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Notices Grid Layout */
+        .notices-section {
+            padding: 60px 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .notices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        /* Individual Card */
+        .notice-card {
+            background-color: #ffffff;
+            text-align: left;
+            padding: 35px;
+            border-radius: 12px;
+            border-left: 6px solid var(--accent-pink);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .notice-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .notice-date {
+            color: blue;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .notice-heading {
+            color: var(--primary-navy);
+            font-size: 1.4rem;
+            line-height: 1.3;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+        }
+
+        .notice-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 20px;
+            /* Limits text height so cards stay somewhat uniform */
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
             overflow: hidden;
-            line-height: 0;
-            /* Removes tiny white space at the bottom */
+        }
+
+        .notice-card strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--primary-navy);
+        }
+
+        /* Button-style Read More */
+        .read-more {
+            margin-top: auto;
+            color: var(--accent-pink);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more::after {
+            content: ' →';
+            transition: margin 0.2s;
+        }
+
+        .read-more:hover::after {
+            margin-left: 5px;
         }
 
 
 
 
-         .main-footer {
+/* --- Footer Styles --- */
+        .main-footer {
             background-color: #000;
             color: #fff;
             padding: 80px 8% 40px;
@@ -275,19 +229,22 @@
         @media (max-width: 1024px) {
             .footer-container { grid-template-columns: 1fr 1fr; }
         }
-
-          @media (max-width: 768px) {
+        
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2rem; }
+            .notices-grid { grid-template-columns: 1fr; }
             .footer-container { grid-template-columns: 1fr; }
-          }
+            .main-footer { text-align: center; }
+            .social-links { justify-content: center; }
+        }
 
 
     </style>
 </head>
-
 <body>
+    
 
-
-       <nav style="font-family:'poppins';display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #0a2540; position: sticky; top: 0; z-index: 1000;">
+<nav style="display: flex; justify-content: space-between; align-items: center; padding: 15px 8%; background: #0a2540; position: sticky; top: 0; z-index: 1000;">
       <div class="logo" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
         <img src="../images/Unilogo.png" alt="Logo" style="height: 38px; width: auto;" />
         <span style="font-weight: 700; line-height: 1; color: white; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.5px;">Nepal Public <br /> University</span>
@@ -331,91 +288,61 @@
 
 
 
-
-
-
-
-
-
-
-
-    <header class="hero">
-        <h1>Contact Us</h1>
-        <p>We are here to help with any questions you may have.</p>
-    </header>
-
-    <div class="container">
-
-
-
-        <div class="card">
-            <h2>Get In Touch</h2>
-
-            <div class="info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <h4>Address</h4>
-                <p>Kathmandu, Nepal</p>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-phone-alt"></i>
-                <h4>Phone</h4>
-                <p>+977-1-4000000</p>
-            </div>
-
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
-                <h4>Email</h4>
-                <p>info@university.edu.np</p>
-            </div>
-
-            <div class="info-item">
-                <i class="fa fa-clock-o"></i>
-                <h4>Working Hours</h4>
-                <p>Sunday-Friday: 9:00 AM - 5:00 PM</p>
-            </div>
-
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
-            </div>
-        </div>
-        <div class="card">
-            <h2>Send a Message</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" placeholder="Full Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email Address" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="How can we help?" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-    </div>
- 
-  <section class="full-map-section">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.31627534!2d85.291113!3d27.708954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu!5e0!3m2!1sen!2snp!4v1700000000000"
-                width="100%" height="100%" style="border:0;" allowfullscreen="">
-
-            </iframe>
-        </section>
-        <div style="margin-bottom: 20px;font-size: 15px;">
-            <p>&copy; 2026 Nepal Public University. All rights reserved.</p>
-
-
-
-
-
     
 
-            <footer class="main-footer">
+    <header class="hero-section">
+        <h1>University Notice Board</h1>
+        <p>Stay updated with the latest announcements, academic schedules, and campus events.</p>
+    </header>
+
+    <section class="notices-section">
+        <div class="notices-grid">
+            
+            <div class="notice-card">
+                <span class="notice-date">21 February</span>
+                <h3 class="notice-heading">BSc Software Engineering Professional Week 2026</h3>
+                <p>
+                    <strong>Subject: Commencement of Fall Professional Week</strong>
+                    This is to inform all students of the BSc Software Engineering program that Professional Week begins on 21 February. This week bridges the gap between academic learning and industry practice with guest lectures and mock interviews. Attendance is mandatory.
+                </p>
+                <a href="#" class="read-more">View Full Schedule</a>
+            </div>
+
+            <div class="notice-card">
+                <span class="notice-date">1 February</span>
+                <h3 class="notice-heading">Nepal Public Science & IT Expo-2025</h3>
+                <p>
+                    <strong>Subject: Invitation to Participate</strong>
+                    The Department of Information Technology is proud to announce the Expo-2025. This event serves as a premier platform for innovative students to showcase technical projects and scientific research. Register your project at the IT admin office today.
+                </p>
+                <a href="#" class="read-more">Registration Details</a>
+            </div>
+
+            <div class="notice-card">
+                <span class="notice-date">31 December</span>
+                <h3 class="notice-heading">Socialization Program at Riverside Resort</h3>
+                <p>
+                    <strong>Subject: Annual Student Excursion</strong>
+                    To foster community spirit, the university is organizing a socialization trip to Riverside Resort. Enjoy team-building, music, and lunch. Buses depart at 7:00 AM sharp. Please collect your passes from Student Affairs.
+                </p>
+                <a href="#" class="read-more">Packing List & Itinerary</a>
+            </div>
+
+            <div class="notice-card" style="border-left-color: #0056b3;">
+                <span class="notice-date" style="color: blue;">15 March</span>
+                <h3 class="notice-heading">Merit-Based Scholarship Examination</h3>
+                <p>
+                    <strong>Subject: Fall 2026 Scholarship Opportunity</strong>
+                    Applications are now open for the Annual Merit Scholarship Exam. Students with a GPA above 3.8 are eligible to apply. The examination will cover core technical competencies and logical reasoning. Top 5 performers will receive 100% tuition waivers.
+                </p>
+                <a href="/templates/Apply.html" class="read-more" style="color: #0056b3;">Apply Now</a>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+<footer class="main-footer">
         <div class="footer-container">
             <div class="footer-col brand">
                 <img src="/images/Unilogo.png" alt="University Logo" class="footer-logo" />
@@ -478,10 +405,5 @@
             </div>
         </div>
     </footer>
-
-
-        
-
-</body>
 
 </html>

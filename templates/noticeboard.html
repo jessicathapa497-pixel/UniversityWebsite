@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notice Board | Nepal Public University</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --border: #e2e8f0;
+            --accent: #f59e0b; /* Warning/Notice Yellow */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--bg); display: flex; }
+
+        /* ===== SIDEBAR (Same as your other pages) ===== */
+        .sidebar { width: 260px; height: 100vh; background: var(--white); border-right: 1px solid var(--border); position: fixed; padding: 25px 20px; }
+        .university-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; padding-left: 10px; }
+        .university-logo img { height: 36px; }
+        .university-logo span { font-weight: 700; font-size: 0.85rem; line-height: 1.2; text-transform: uppercase; color: var(--text-dark); }
+        .nav-menu { list-style: none; }
+        .nav-item { margin-bottom: 6px; }
+        .nav-link { display: flex; align-items: center; gap: 14px; padding: 12px 16px; text-decoration: none; color: var(--text-gray); font-size: 14px; font-weight: 500; border-radius: 12px; transition: 0.25s ease; position: relative; }
+        .nav-link:hover, .nav-item.active .nav-link { background: #eff6ff; color: var(--primary); }
+        .nav-item.active .nav-link::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 4px; background: var(--primary); border-radius: 10px; }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content { margin-left: 260px; width: calc(100% - 260px); padding: 30px 40px; }
+        
+        /* ===== HEADER ===== */
+        .top-header { display: flex; justify-content: space-between; align-items: center; background: #fff; padding: 18px 25px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .search-bar { background: #f1f5f9; border-radius: 14px; padding: 10px 18px; display: flex; align-items: center; gap: 10px; width: 420px; }
+        .search-bar input { border: none; background: transparent; outline: none; width: 100%; }
+
+        /* ===== NOTICE BOARD LAYOUT ===== */
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        .notice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        
+        /* Notice Card Design */
+        .notice-card { background: var(--white); border-radius: 20px; padding: 25px; border: 1px solid var(--border); transition: 0.3s ease; position: relative; overflow: hidden; }
+        .notice-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.05); border-color: var(--primary); }
+        
+        .category-tag { font-size: 10px; text-transform: uppercase; font-weight: 700; padding: 4px 10px; border-radius: 5px; margin-bottom: 12px; display: inline-block; }
+        .exam { background: #fee2e2; color: #ef4444; }
+        .event { background: #dcfce7; color: #15803d; }
+        .holiday { background: #fef3c7; color: #d97706; }
+        .general { background: #e0e7ff; color: #4338ca; }
+
+        .notice-date { font-size: 12px; color: var(--text-gray); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+        .notice-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--text-dark); line-height: 1.4; }
+        .notice-card p { font-size: 14px; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; }
+
+        .btn-view { text-decoration: none; color: var(--primary); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+        .add-btn { background: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 12px; font-weight: 600; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="university-logo">
+        <img src="../images/Unilogo.png" alt="Logo">
+        <span>Nepal Public<br>University</span>
+    </div>
+    <ul class="nav-menu">
+        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fa-solid fa-chart-pie"></i>Dashboard</a></li>
+        <li class="nav-item"><a href="students.html" class="nav-link"><i class="fa-solid fa-graduation-cap"></i>Students</a></li>
+        <li class="nav-item"><a href="teachers.html" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i>Teachers</a></li>
+        <li class="nav-item"><a href="staffs.html" class="nav-link"><i class="fa-solid fa-users"></i>Staffs</a></li>
+        <li class="nav-item active"><a href="notice.html" class="nav-link"><i class="fa-solid fa-bullhorn"></i>Notice Board</a></li>
+        <li class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-gear"></i>Settings</a></li>
+    </ul>
+</aside>
+
+<main class="main-content">
+    <header class="top-header">
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass" style="color:#94a3b8;"></i>
+            <input type="text" placeholder="Search notices...">
+        </div>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <div style="text-align: right;"><h4 style="font-size: 14px;">Admin User</h4><p style="font-size: 12px; color: var(--text-gray);">Super Admin</p></div>
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" style="width: 42px; border-radius: 50%;">
+        </div>
+    </header>
+
+    <div class="section-header">
+        <h2>University Announcements</h2>
+        <button class="add-btn"><i class="fa-solid fa-plus"></i> Post New Notice</button>
+    </div>
+
+    <div class="notice-grid">
+        <div class="notice-card">
+            <span class="category-tag exam">Examination</span>
+            <div class="notice-date"><i class="fa-regular fa-calendar"></i> Jan 25, 2026</div>
+            <h3>Final Semester Exam Schedule Released</h3>
+            <p>The final examination for the Fall 2025 session will begin from February 15th. Please download the routine...</p>
+            <a href="#" class="btn-view">Read Full Notice <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="notice-card">
+            <span class="category-tag holiday">Holiday</span>
+            <div class="notice-date"><i class="fa-regular fa-calendar"></i> Jan 20, 2026</div>
+            <h3>Public Holiday - Saraswati Puja</h3>
+            <p>The university will remain closed on the occasion of Saraswati Puja. Normal classes will resume from Monday...</p>
+            <a href="#" class="btn-view">Read Full Notice <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="notice-card">
+            <span class="category-tag event">Event</span>
+            <div class="notice-date"><i class="fa-regular fa-calendar"></i> Jan 18, 2026</div>
+            <h3>Annual Tech Fest 2026</h3>
+            <p>Registrations are now open for the Annual Tech Fest. Students from IT and Engineering can form teams of four...</p>
+            <a href="#" class="btn-view">Read Full Notice <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="notice-card">
+            <span class="category-tag general">General</span>
+            <div class="notice-date"><i class="fa-regular fa-calendar"></i> Jan 15, 2026</div>
+            <h3>Library Timings Updated</h3>
+            <p>From February 1st, the central library will remain open until 8:00 PM on weekdays to help students with exam prep...</p>
+            <a href="#" class="btn-view">Read Full Notice <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="notice-card">
+            <span class="category-tag exam">Admission</span>
+            <div class="notice-date"><i class="fa-regular fa-calendar"></i> Jan 10, 2026</div>
+            <h3>Spring 2026 Intake Open</h3>
+            <p>Nepal Public University is now accepting applications for the Spring 2026 session. Deadline for application is...</p>
+            <a href="#" class="btn-view">Read Full Notice <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>

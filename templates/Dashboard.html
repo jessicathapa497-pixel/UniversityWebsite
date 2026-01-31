@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Admin | Management System</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --sidebar-bg: #ffffff;
+            --main-bg: #f8fafc;
+            --text-gray: #64748b;
+            --text-dark: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--main-bg);
+            display: flex;
+        }
+
+        /* ================= SIDEBAR (Restored & Improved) ================= */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            padding: 25px 20px;
+        }
+
+        .university-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+
+        .university-logo img { height: 36px; }
+
+        .university-logo span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .nav-menu { list-style: none; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: 0.25s ease;
+        }
+
+        .nav-link:hover, .active-link {
+            background: #eff6ff;
+            color: var(--primary);
+        }
+
+        /* ================= MAIN CONTENT ================= */
+        .main-content {
+            margin-left: 260px;
+            width: calc(100% - 260px);
+            padding: 30px 40px;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            background: #fff;
+            padding: 15px 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .search-bar {
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 350px;
+        }
+
+        .search-bar input { border: none; background: none; outline: none; width: 100%; }
+
+        /* ================= YOUR ORIGINAL CARDS (Restored) ================= */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            padding: 26px;
+            border-radius: 22px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            color: #1e293b;
+        }
+
+        .card h2 { font-size: 28px; font-weight: 700; margin-bottom: 5px; }
+        .card p { font-size: 14px; font-weight: 500; opacity: 0.8; }
+        .card i { position: absolute; top: 20px; right: 20px; font-size: 24px; opacity: 0.2; }
+
+        .card-students { background: #eff6ff; border-bottom: 5px solid #3b82f6; }
+        .card-faculty { background: #ecfdf5; border-bottom: 5px solid #10b981; }
+        .card-partners { background: #fffbeb; border-bottom: 5px solid #f59e0b; }
+        .card-placement { background: linear-gradient(135deg, #3b82f6, #6366f1); color: #fff; }
+
+        /* ================= MANAGEMENT AREA ================= */
+        .mgmt-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 25px;
+        }
+
+        .table-container, .chart-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { text-align: left; font-size: 12px; color: var(--text-gray); padding: 10px; border-bottom: 1px solid var(--border); }
+        td { padding: 12px 10px; font-size: 14px; border-bottom: 1px solid #f8fafc; }
+
+        .btn-manage {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <div class="university-logo">
+        <img src="../images/Unilogo.png" alt="University Logo" />
+        <span>Nepal Public<br>University</span>
+    </div>
+
+    <ul class="nav-menu">
+        <li><a href="/templates/Dashboard.html" class="nav-link"><i class="fa-solid fa-gauge"></i>Dashboard</a></li>
+        <li><a href="/templates/Students.html" class="nav-link"><i class="fa-solid fa-users"></i>Students</a></li>
+        <li><a href="/templates/staffs.html" class="nav-link"><i class="fa-solid fa-chalkboard-user"></i>Staffs</a></li>
+        <li><a href="/templates/noticeboard.html" class="nav-link"><i class="fa-solid fa-bullhorn"></i>Notice Board</a></li>
+        <li><a href="/templates/Settings.html" class="nav-link"><i class="fa-solid fa-gear"></i>Settings</a></li>
+    </ul>
+</aside>
+
+<main class="main-content">
+    <header class="top-header">
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Quick search...">
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="text-align: right;"><h4 style="font-size: 14px;">Admin User</h4><p style="font-size: 12px; color: var(--text-gray);">Super Admin</p></div>
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=3b82f6&color=fff" style="width: 40px; border-radius: 50%;">
+        </div>
+    </header>
+
+    <h2 style="margin-bottom: 25px;">University Overview</h2>
+
+    <section class="dashboard-grid">
+        <div class="card card-students">
+            <i class="fa-solid fa-user-graduate"></i>
+            <h2>5,000+</h2>
+            <p>Total Students</p>
+        </div>
+        <div class="card card-faculty">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h2>179</h2>
+            <p>Active Faculty</p>
+        </div>
+        <div class="card card-partners">
+            <i class="fa-solid fa-building"></i>
+            <h2>15+</h2>
+            <p>Industry Partners</p>
+        </div>
+        <div class="card card-placement">
+            <i class="fa-solid fa-trophy"></i>
+            <h2>95%</h2>
+            <p>Placement Rate</p>
+        </div>
+    </section>
+
+    <div class="mgmt-container">
+        <div class="table-container">
+            <h3>Recent Admissions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Department</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aman Sharma</td>
+                        <td>IT Engineering</td>
+                        <td><button class="btn-manage">Manage</button></td>
+                    </tr>
+                    <tr>
+                        <td>Sita Kumari</td>
+                        <td>Business Admin</td>
+                        <td><button class="btn-manage">Manage</button></td>
+                    </tr>
+                    <tr>
+                        <td>Sahil Bhandari</td>
+                        <td>Software Engineering</td>
+                        <td><button class="btn-manage">Manage</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-container">
+            <h3>Enrollment Trend</h3>
+            <canvas id="uniChart"></canvas>
+        </div>
+    </div>
+</main>
+
+<script>
+    const ctx = document.getElementById('uniChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['2022', '2023', '2024', '2025'],
+            datasets: [{
+                label: 'Students',
+                data: [3200, 4100, 4800, 5000],
+                backgroundColor: '#3b82f6',
+                borderRadius: 5
+            }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+</script>
+
+</body>
+</html>
